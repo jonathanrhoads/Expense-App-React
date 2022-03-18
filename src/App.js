@@ -1,8 +1,9 @@
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 import Title from "./components/UI/Title";
 
 const App = () => {
-  const expenses = [
+  let expenses = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -29,9 +30,15 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log(expense);
+    expenses = [...expenses, expense];
+  }
+
   return (
     <div>
       <Title />
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
   );
